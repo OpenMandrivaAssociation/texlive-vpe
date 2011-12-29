@@ -18,7 +18,6 @@ BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
 Provides:	texlive-vpe.bin = %{EVRD}
-Conflicts:	texlive-texmf <= 20110705-3
 
 %description
 VPE is a system to make the equivalent of "source special"
@@ -30,20 +29,12 @@ via LaTeX/dvips, pdfTeX (version 0.14 or better), and
 LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
 (pdf)TeX processor shoud be run with shell escapes enabled.
 
-%pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -52,7 +43,6 @@ LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
 %{_texmfdistdir}/scripts/vpe/vpe.pl
 %{_texmfdistdir}/tex/latex/vpe/vpe.sty
 %doc %{_texmfdistdir}/doc/latex/vpe/vpe.txt
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -67,5 +57,3 @@ pushd %{buildroot}%{_bindir}
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
