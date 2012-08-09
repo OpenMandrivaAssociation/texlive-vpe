@@ -1,12 +1,12 @@
-# revision 18835
+# revision 26039
 # category Package
 # catalog-ctan /macros/latex/contrib/vpe
-# catalog-date 2007-03-13 09:06:46 +0100
+# catalog-date 2012-04-18 16:26:37 +0200
 # catalog-license lppl
-# catalog-version 0.1
+# catalog-version 0.2
 Name:		texlive-vpe
-Version:	0.1
-Release:	2
+Version:	0.2
+Release:	1
 Summary:	Source specials for PDF output
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/vpe
@@ -27,7 +27,7 @@ was marked. The system comprises a perl file (vpe.pl) and a
 LaTeX package (vpe.sty); it will work with PDF files generated
 via LaTeX/dvips, pdfTeX (version 0.14 or better), and
 LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
-(pdf)TeX processor shoud be run with shell escapes enabled.
+(pdf)TeX processor should be run with shell escapes enabled.
 
 %post
     %{_sbindir}/texlive.post
@@ -42,7 +42,7 @@ LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
 %{_bindir}/vpe
 %{_texmfdistdir}/scripts/vpe/vpe.pl
 %{_texmfdistdir}/tex/latex/vpe/vpe.sty
-%doc %{_texmfdistdir}/doc/latex/vpe/vpe.txt
+%doc %{_texmfdistdir}/doc/latex/vpe/README
 
 #-----------------------------------------------------------------------
 %prep
