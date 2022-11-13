@@ -1,18 +1,12 @@
-# revision 26039
-# category Package
-# catalog-ctan /macros/latex/contrib/vpe
-# catalog-date 2012-04-18 16:26:37 +0200
-# catalog-license lppl
-# catalog-version 0.2
 Name:		texlive-vpe
-Version:	0.2
-Release:	10
+Version:	26039
+Release:	1
 Summary:	Source specials for PDF output
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/vpe
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -30,12 +24,12 @@ LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
 (pdf)TeX processor should be run with shell escapes enabled.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -46,31 +40,14 @@ LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdistdir}/scripts/vpe/vpe.pl vpe
+ln -sf %{_texmfdistdir}/scripts/vpe/vpe.pl vpe
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
-
-
-%changelog
-* Thu Aug 09 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.2-1
-+ Revision: 813174
-- Update to latest release.
-
-* Thu Jan 05 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.1-2
-+ Revision: 757489
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.1-1
-+ Revision: 719896
-- texlive-vpe
-- texlive-vpe
-- texlive-vpe
-
