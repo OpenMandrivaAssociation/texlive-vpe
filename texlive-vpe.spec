@@ -1,6 +1,6 @@
 Name:		texlive-vpe
 Version:	26039
-Release:	1
+Release:	2
 Summary:	Source specials for PDF output
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/vpe
