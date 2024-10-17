@@ -3,7 +3,7 @@ Version:	26039
 Release:	2
 Summary:	Source specials for PDF output
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/vpe
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/vpe
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.doc.r%{version}.tar.xz
