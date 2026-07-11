@@ -1,53 +1,27 @@
-Name:		texlive-vpe
-Version:	26039
-Release:	2
+%global tl_name vpe
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.2
+Release:	%{tl_revision}.1
 Summary:	Source specials for PDF output
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/vpe
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.doc.r%{version}.tar.xz
+License:	lppl1.2
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/vpe.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
-Provides:	texlive-vpe.bin = %{EVRD}
+BuildSystem:	texlive
+Requires:	texlive(vpe.bin)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-VPE is a system to make the equivalent of "source special"
-marks in a PDF file. Clicking on a mark will activate an
-editor, pointing at the source line that produced the text that
-was marked. The system comprises a perl file (vpe.pl) and a
-LaTeX package (vpe.sty); it will work with PDF files generated
-via LaTeX/dvips, pdfTeX (version 0.14 or better), and
-LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the
-(pdf)TeX processor should be run with shell escapes enabled.
+VPE is a system to make the equivalent of "source special" marks in a
+PDF file. Clicking on a mark will activate an editor, pointing at the
+source line that produced the text that was marked. The system comprises
+a perl file (vpe.pl) and a LaTeX package (vpe.sty); it will work with
+PDF files generated via LaTeX/dvips, pdfTeX (version 0.14 or better),
+and LaTeX/VTeX. Using the LaTeX/dvips or pdfLaTeX routes, the (pdf)TeX
+processor should be run with shell escapes enabled.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_bindir}/vpe
-%{_texmfdistdir}/scripts/vpe/vpe.pl
-%{_texmfdistdir}/tex/latex/vpe/vpe.sty
-%doc %{_texmfdistdir}/doc/latex/vpe/README
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-ln -sf %{_texmfdistdir}/scripts/vpe/vpe.pl vpe
-popd
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
