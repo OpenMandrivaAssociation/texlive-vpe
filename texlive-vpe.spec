@@ -1,5 +1,6 @@
 %global tl_name vpe
 %global tl_revision 79618
+%global tl_bin_links vpe:%{_texmfdistdir}/scripts/vpe/vpe.pl
 
 Name:		texlive-%{tl_name}
 Epoch:		1
@@ -15,6 +16,8 @@ BuildArch:	noarch
 BuildSystem:	texlive
 Requires:	texlive(vpe.bin)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
+Provides:	texlive(%{tl_name}.bin) = %{tl_revision}
+Provides:	texlive-%{tl_name}.bin = %{EVRD}
 
 %description
 VPE is a system to make the equivalent of "source special" marks in a
